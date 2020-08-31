@@ -71,9 +71,9 @@ def insert3(procedure, item1, item2, item3):
     sqlStoreReadings = "CALL {}('{}', {}, {}, {})".format(
         procedure,
         datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        mainImin,
-        mainIavg,
-        mainImax)
+        item1,
+        item2,
+        item3)
     #print(sqlStoreReadings)
     shackCursor.execute(sqlStoreReadings)
     shackConnection.conn.commit()
@@ -98,12 +98,13 @@ while True:
         if (datetime.datetime.now() - lastSample).total_seconds() > sampleFrequency:
             mainVmin, mainVavg, mainVmax = minAvgMax(mainVlist)
             mainImin, mainIavg, mainImax = minAvgMax(mainIlist)
-            rigImin, rigIavg, rigImax = minAvgMax(mainIlist)
+            rigImin, rigIavg, rigImax = minAvgMax(rigIlist)
 
             lastSample = datetime.datetime.now()
 
             insert3("addMainVoltageValues", mainVmin, mainVavg, mainVmax)
             insert3("addMainCurrentValues", mainImin, mainIavg, mainImax)
+            insert3("addHFrigCurrentValues", rigImin, rigIavg, rigImax)
 
     except:
         shackCursor.close()
