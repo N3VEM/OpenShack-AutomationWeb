@@ -16,12 +16,12 @@ sampleFrequency = 5
 #remark the next lines out (or delete them) for the live show
 shackCursor.execute("SELECT VERSION()")
 version = shackCursor.fetchone()
-print(version[0])
+#print(version[0])
 
 powerMonitorArduino = serial.Serial('/dev/ttyACM0')
 time.sleep(1)
 powerMonitorArduino.reset_input_buffer()
-print("ready")
+#print("ready")
 
 #-----Functions---------------------------------------------------#
 

@@ -46,10 +46,21 @@
     <div class="w3-container w3-blue">
         <h6 align="center">N3VEM</h6>
       </div>
+    
+      <div class="w3-row">
+        <div class="w3-green w3-container w3-quarter w3-padding-16">
+            <a href="include/control/control.php?cmnd=vuon" target = 'blank' class="w3-button w3-block w3-bottombar w3-border-green w3-black">VU Meters On</a>
+            <a href="include/control/control.php?cmnd=vuoff" target = 'blank' class="w3-button w3-block w3-bottombar w3-border-green w3-black">VU Meters Off</a>
+        </div>
+        <div class="w3-container w3-threequarter">
+          
+        </div>
+      </div>  
+    
 
   </body>
 </html>
 
 <?php
-//$conn->close();
+
 ?>
