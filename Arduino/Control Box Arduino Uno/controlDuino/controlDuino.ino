@@ -6,6 +6,8 @@
   int vuTwoLight = 3; //go kit rig
   int vuThreeLight = 4; //shack box
   int vuFourLight = 5; //laptop
+  int deskLight = 12; //desk lights (under montiors)
+  int taskLight = 13; //task lights (above monitors)
   
   //variables for use with serial reading
   String incomingCommand = "";
@@ -71,8 +73,23 @@ void loop() {
     }
   else if(incomingCommand.equals("vu on") ){
       powerVuMetersOn();
-      Serial.println("{\"response\":\"vu meters on\"}");
-      
+      Serial.println("{\"response\":\"vu meters on\"}");      
+    }
+  else if(incomingCommand.equals("desk lights on") ){
+      lightOn(deskLight);
+      Serial.println("{\"response\":\"desk lights on\"}");      
+    }
+  else if(incomingCommand.equals("desk lights off") ){
+      lightOff(deskLight);
+      Serial.println("{\"response\":\"desk lights off\"}");      
+    }
+  else if(incomingCommand.equals("task lights on") ){
+      lightOn(taskLight);
+      Serial.println("{\"response\":\"task lights on\"}");      
+    }
+  else if(incomingCommand.equals("task lights off") ){
+      lightOff(taskLight);
+      Serial.println("{\"response\":\"desk lights off\"}");      
     }
   else if(incomingCommand.equals("clickclack") ){
       Serial.println("{\"response\":\"cycling relays\"}");
@@ -99,6 +116,8 @@ void loop() {
   vuMeterLighting(vuFourSense, vuFourSenseThreshold, vuFourMaxCycles, vuFourCycleCount, vuFourLight);
 
 }
+
+
 /*------functions-------------------------------------------------------------------*/
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 void powerVuMetersOn(){
@@ -155,6 +174,14 @@ void VuLightOn(int lightPin){
 }
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 void VuLightOff(int lightPin){
+  digitalWrite(lightPin, HIGH);
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+void lightOn(int lightPin){
+  digitalWrite(lightPin, LOW);
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+void lightOff(int lightPin){
   digitalWrite(lightPin, HIGH);
 }
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/

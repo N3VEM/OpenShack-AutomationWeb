@@ -49,8 +49,12 @@
     
       <div class="w3-row">
         <div class="w3-green w3-container w3-quarter w3-padding-16">
-            <a href="include/control/control.php?cmnd=vuon" target = 'blank' class="w3-button w3-block w3-bottombar w3-border-green w3-black">VU Meters On</a>
-            <a href="include/control/control.php?cmnd=vuoff" target = 'blank' class="w3-button w3-block w3-bottombar w3-border-green w3-black">VU Meters Off</a>
+            <a href="include/control/control.php?cmnd=desklighton" target = 'blank' class="w3-button w3-block w3-bottombar w3-border-green w3-black"><b>Desk Lights On</b></a>
+            <a href="include/control/control.php?cmnd=desklightoff" target = 'blank' class="w3-button w3-block w3-bottombar w3-border-green w3-black"><b>Desk Lights Off</b></a>
+            <a href="include/control/control.php?cmnd=tasklighton" target = 'blank' class="w3-button w3-block w3-bottombar w3-border-green w3-black"><b>Task Lights On</b></a>
+            <a href="include/control/control.php?cmnd=tasklightoff" target = 'blank' class="w3-button w3-block w3-bottombar w3-border-green w3-black"><b>Task Lights Off</b></a>
+            <a href="include/control/control.php?cmnd=vuon" target = 'blank' class="w3-button w3-block w3-bottombar w3-border-green w3-black"><b>VU Meters On</b></a>
+            <a href="include/control/control.php?cmnd=vuoff" target = 'blank' class="w3-button w3-block w3-bottombar w3-border-green w3-black"><b>VU Meters Off</b></a>
         </div>
         <div class="w3-container w3-threequarter">
           

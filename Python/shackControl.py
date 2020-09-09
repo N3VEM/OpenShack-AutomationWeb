@@ -27,11 +27,23 @@ def controlTerminal():
     print("00 - Exit Terminal Mode")
     print("01 - Turn VU Meters On")
     print("02 - Turn VU Meters Off")
+    print("03 - Desk Lights On")
+    print("04 - Desk Lights Off")
+    print("05 - Task Lights On")
+    print("06 - Task Lights Off")
     command = input("Select: ")
     if(command == 1):
         sendCommand("vu on")
     elif(command == 2):
         sendCommand("vu off")
+    elif(command == 3):
+        sendCommand("desk lights on")
+    elif(command == 4):
+        sendCommand("desk lights off")
+    elif(command == 5):
+        sendCommand("task lights on")
+    elif(command == 6):
+        sendCommand("task lights off")
     elif(command == 0):
         return 0
     controlTerminal()
@@ -56,6 +68,21 @@ elif (command== 'vuoff'):
     sendCommand('vu off')
     check = readResponse()
     confirm = readResponse()
-
+elif (command== 'desklighton'):
+    sendCommand('desk lights on')
+    check = readResponse()
+    confirm = readResponse()
+elif (command== 'desklightoff'):
+    sendCommand('desk lights off')
+    check = readResponse()
+    confirm = readResponse()
+elif (command== 'tasklighton'):
+    sendCommand('task lights on')
+    check = readResponse()
+    confirm = readResponse()
+elif (command== 'tasklightoff'):
+    sendCommand('task lights off')
+    check = readResponse()
+    confirm = readResponse()
 
 
