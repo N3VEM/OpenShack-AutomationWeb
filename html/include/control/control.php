@@ -1,7 +1,7 @@
 <?php
 
 $commandReceived = $_REQUEST['cmnd'];
-//echo "$commandReceived<br>";
+echo "$commandReceived<br>";
 
 if ($commandReceived == 'vuoff')
 {
@@ -27,7 +27,15 @@ elseif ($commandReceived == 'tasklightoff')
 {
     $output = shell_exec(taskLightsOff());
 }
-//var_dump($output);
+elseif ($commandReceived == 'hello')
+{
+    $output = shell_exec(hello());
+}
+elseif ($commandReceived == 'goodbye')
+{
+    $output = shell_exec(goodbye());
+}
+var_dump($output);
 
 #--------------functions----------------------------------------------------------
 function vuMetersOff()
@@ -62,6 +70,18 @@ function taskLightsOn()
 function taskLightsOff()
 {
     return escapeshellcmd("python ../../../Python/shackControl.py --cmnd tasklightoff");
+    
+}
+
+function hello()
+{
+    return escapeshellcmd("python ../../../Python/shackControl.py --cmnd hello");
+    
+}
+
+function goodbye()
+{
+    return escapeshellcmd("python ../../../Python/shackControl.py --cmnd goodbye");
     
 }
 

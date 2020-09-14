@@ -31,6 +31,10 @@ def controlTerminal():
     print("04 - Desk Lights Off")
     print("05 - Task Lights On")
     print("06 - Task Lights Off")
+    print("07 - Main Rig On")
+    print("08 - Main Rig Off")
+    print("09 - Audio Equipment On")
+    print("10 - Audio Equipment Off")
     command = input("Select: ")
     if(command == 1):
         sendCommand("vu on")
@@ -44,6 +48,14 @@ def controlTerminal():
         sendCommand("task lights on")
     elif(command == 6):
         sendCommand("task lights off")
+    elif(command == 7):
+        sendCommand("main rig power on")
+    elif(command == 8):
+        sendCommand("main rig power off")
+    elif(command == 9):
+        sendCommand("audio power On")
+    elif(command == 10):
+        sendCommand("audio power off")
     elif(command == 0):
         return 0
     controlTerminal()
@@ -84,5 +96,51 @@ elif (command== 'tasklightoff'):
     sendCommand('task lights off')
     check = readResponse()
     confirm = readResponse()
-
-
+elif (command== 'mainrigon'):
+    sendCommand('main rig power on')
+    check = readResponse()
+    confirm = readResponse()
+elif (command== 'mainrigoff'):
+    sendCommand('main rig power off')
+    check = readResponse()
+    confirm = readResponse()
+elif (command== 'audioon'):
+    sendCommand('audio power on')
+    check = readResponse()
+    confirm = readResponse()
+elif (command== 'audiooff'):
+    sendCommand('audio power off')
+    check = readResponse()
+    confirm = readResponse()
+elif (command== 'hello'):
+    sendCommand('desk lights on')
+    check = readResponse()
+    confirm = readResponse()
+    sendCommand('task lights on')
+    check = readResponse()
+    confirm = readResponse()
+    sendCommand('audio power on')
+    check = readResponse()
+    confirm = readResponse()
+    sendCommand('main rig power on')
+    check = readResponse()
+    confirm = readResponse()
+    sendCommand('vu on')
+    check = readResponse()
+    confirm = readResponse()
+elif (command== 'goodbye'):
+    sendCommand('desk lights off')
+    check = readResponse()
+    confirm = readResponse()
+    sendCommand('task lights off')
+    check = readResponse()
+    confirm = readResponse()
+    sendCommand('audio power off')
+    check = readResponse()
+    confirm = readResponse()
+    sendCommand('main rig power off')
+    check = readResponse()
+    confirm = readResponse()
+    sendCommand('vu off')
+    check = readResponse()
+    confirm = readResponse()
