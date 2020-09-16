@@ -9,7 +9,7 @@ import argparse
 import os
 
 
-controlArduino = serial.Serial('/dev/ttyACM1')
+controlArduino = serial.Serial('/dev/ttyACM0')
 time.sleep(.5)
 controlArduino.reset_input_buffer()
 
