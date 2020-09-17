@@ -18,7 +18,7 @@ shackCursor.execute("SELECT VERSION()")
 version = shackCursor.fetchone()
 #print(version[0])
 
-powerMonitorArduino = serial.Serial('/dev/ttyACM0')
+powerMonitorArduino = serial.Serial('/dev/ttyACM1')
 time.sleep(1)
 powerMonitorArduino.reset_input_buffer()
 #print("ready")
