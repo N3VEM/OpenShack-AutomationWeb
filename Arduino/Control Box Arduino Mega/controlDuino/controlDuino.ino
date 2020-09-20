@@ -7,6 +7,7 @@
   int vuThreeLight = 4; //shack box
   int vuFourLight = 5; //laptop
   int vuPowerPin = 6; //for overall power to VU meter control boards
+  int speakerOutletPowerPin = 9; //this one is switching half of a duplex outlet - the half with the speaker power supply plugged into it.  Note -  as wired, audio power must be on before speaker power can be turned on
   int audioChainPowerPin = 10; //this one is switching AC
   int mainRigPowerPin = 11; //watch your relay specs!! I'm currently using the relay here to control a second high current rated relay
   int deskLight = 12; //desk lights (under montiors)
@@ -109,6 +110,14 @@ void loop() {
   else if(incomingCommand.equals("audio power off") ){
       powerOff(audioChainPowerPin);
       Serial.println("{\"response\":\"audio power off\"}");      
+    }
+  else if(incomingCommand.equals("speaker power on") ){
+      powerOn(speakerOutletPowerPin);
+      Serial.println("{\"response\":\"speaker power on\"}");      
+    }
+  else if(incomingCommand.equals("speaker power off") ){
+      powerOff(speakerOutletPowerPin);
+      Serial.println("{\"response\":\"speaker power off\"}");      
     }
   else if(incomingCommand.equals("clickclack") ){
       Serial.println("{\"response\":\"cycling relays\"}");

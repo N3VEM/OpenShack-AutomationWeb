@@ -119,6 +119,60 @@
     });        
 
     $(document).ready(function(){
+      $("#rigonbutton").click(function(){
+        $.post("include/control/control.php",
+        {
+          cmnd: "mainrigon"
+        });
+      });
+    });  
+
+    $(document).ready(function(){
+      $("#rigoffbutton").click(function(){
+        $.post("include/control/control.php",
+        {
+          cmnd: "mainrigoff"
+        });
+      });
+    });       
+
+    $(document).ready(function(){
+      $("#audioonbutton").click(function(){
+        $.post("include/control/control.php",
+        {
+          cmnd: "audioon"
+        });
+      });
+    });  
+
+    $(document).ready(function(){
+      $("#audiooffbutton").click(function(){
+        $.post("include/control/control.php",
+        {
+          cmnd: "audiooff"
+        });
+      });
+    });      
+
+    $(document).ready(function(){
+      $("#speakersonbutton").click(function(){
+        $.post("include/control/control.php",
+        {
+          cmnd: "speakerson"
+        });
+      });
+    });  
+
+    $(document).ready(function(){
+      $("#speakersoffbutton").click(function(){
+        $.post("include/control/control.php",
+        {
+          cmnd: "speakersoff"
+        });
+      });
+    });       
+
+    $(document).ready(function(){
       $("#goodbyebutton").click(function(){
         $.post("include/control/control.php",
         {
@@ -183,6 +237,12 @@
           <button class="w3-button w3-block w3-border w3-border-green w3-black w3-text-green" id="lowlightsoffbutton"><b>Desk Lights Off</b></button>
           <button class="w3-button w3-block w3-border w3-border-green w3-black w3-text-green" id="highlightsonbutton"><b>Overhead Lights On</b></button>
           <button class="w3-button w3-block w3-border w3-border-green w3-black w3-text-green" id="highlightsoffbutton"><b>Overhead Lights Off</b></button>
+          <button class="w3-button w3-block w3-border w3-border-green w3-black w3-text-green" id="rigonbutton"><b>Main Rig On</b></button>
+          <button class="w3-button w3-block w3-border w3-border-green w3-black w3-text-green" id="rigoffbutton"><b>Main Rig Off</b></button>
+          <button class="w3-button w3-block w3-border w3-border-green w3-black w3-text-green" id="audioonbutton"><b>Audio Equipment On</b></button>
+          <button class="w3-button w3-block w3-border w3-border-green w3-black w3-text-green" id="audiooffbutton"><b>Audio Equipment Off</b></button>    
+          <button class="w3-button w3-block w3-border w3-border-green w3-black w3-text-green" id="speakersonbutton"><b>Speakers On</b></button>
+          <button class="w3-button w3-block w3-border w3-border-green w3-black w3-text-green" id="speakersoffbutton"><b>Speakers Off</b></button>            
           <button class="w3-button w3-block w3-border w3-border-green w3-black w3-text-green" id="vuonbutton"><b>VU Meters On</b></button>
           <button class="w3-button w3-block w3-border w3-border-green w3-black w3-text-green" id="vuoffbutton"><b>VU Meters Off</b></button>            
         </div>
