@@ -24,8 +24,8 @@ def readResponse():
 
 def controlTerminal():
     os.system('cls' if os.name == 'nt' else 'clear')
-    print("00 - Exit Terminal Mode")
-    print("01 - Turn VU Meters On")
+    print("00 - Exit Terminal Mode          11 - Speakers On")
+    print("01 - Turn VU Meters On           12 - Speakers Off")
     print("02 - Turn VU Meters Off")
     print("03 - Desk Lights On")
     print("04 - Desk Lights Off")
@@ -53,9 +53,15 @@ def controlTerminal():
     elif(command == 8):
         sendCommand("main rig power off")
     elif(command == 9):
-        sendCommand("audio power On")
+        sendCommand("audio power on")
     elif(command == 10):
         sendCommand("audio power off")
+    elif(command == 11):
+        sendCommand("audio power on")
+        time.sleep(2)
+        sendCommand("speaker power on")
+    elif(command == 12):
+        sendCommand("speaker power off")
     elif(command == 0):
         return 0
     controlTerminal()
@@ -112,23 +118,40 @@ elif (command== 'audiooff'):
     sendCommand('audio power off')
     check = readResponse()
     confirm = readResponse()
+elif (command== 'speakerson'):
+    sendCommand('speaker power on')
+    check = readResponse()
+    confirm = readResponse()
+elif (command== 'speakersoff'):
+    sendCommand('speaker power off')
+    check = readResponse()
+    confirm = readResponse()
 elif (command== 'hello'):
-    sendCommand('desk lights on')
-    check = readResponse()
-    confirm = readResponse()
-    sendCommand('task lights on')
-    check = readResponse()
-    confirm = readResponse()
     sendCommand('audio power on')
-    check = readResponse()
-    confirm = readResponse()
-    sendCommand('main rig power on')
     check = readResponse()
     confirm = readResponse()
     sendCommand('vu on')
     check = readResponse()
     confirm = readResponse()
+    sendCommand('desk lights on')
+    check = readResponse()
+    confirm = readResponse()
+    sendCommand('task lights on')
+    check = readResponse()
+    confirm = readResponse()    
+    sendCommand('main rig power on')
+    check = readResponse()
+    confirm = readResponse()
+    sendCommand('speaker power on')
+    check = readResponse()
+    confirm = readResponse()        
 elif (command== 'goodbye'):
+    sendCommand('speaker power off')
+    check = readResponse()
+    confirm = readResponse()   
+    sendCommand('main rig power off')
+    check = readResponse()
+    confirm = readResponse()
     sendCommand('desk lights off')
     check = readResponse()
     confirm = readResponse()
@@ -136,9 +159,6 @@ elif (command== 'goodbye'):
     check = readResponse()
     confirm = readResponse()
     sendCommand('audio power off')
-    check = readResponse()
-    confirm = readResponse()
-    sendCommand('main rig power off')
     check = readResponse()
     confirm = readResponse()
     sendCommand('vu off')
