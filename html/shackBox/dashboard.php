@@ -1,8 +1,8 @@
 <?php
 
-  include "../world.php";
+  include "../../world.php";
 
-  $strSensorDataFileContents = file_get_contents('../currentSensorData.json');
+  $strSensorDataFileContents = file_get_contents('../../currentSensorData.json');
   //var_dump($strSensorDataFileContents);
   $sensorDataArray = json_decode($strSensorDataFileContents, true);
   //var_dump($sensorData);
