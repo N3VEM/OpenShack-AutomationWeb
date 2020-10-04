@@ -199,58 +199,57 @@
 <body>
 
 
-  <body class="w3-black">
+  <body class="w3-black w3-padding-16">
     <div class="w3-cell-row w3-black">
 
       <div class="w3-container w3-black w3-border w3-border-green w3-cell">
-      <H5 class="w3-text-green" align="center"><b>MAIN VOLTAGE</b></H5>
-        <div class="w3-cell-row">
-          <p class="w3-text-green" align ="center" id="mainVoltage"><b>Loading</b></p>
-        </div>
+        <H6 class="w3-text-green" align="center"><b>MAIN VOLTAGE</b></H6>
+        <p class="w3-text-green w3-small" align ="center" id="mainVoltage"><b>Loading</b></p>
       </div>
       <div class="w3-container w3-black w3-border w3-border-green w3-cell">
-      <H5 class="w3-text-green" align="center"><b>MAIN CURRENT</b></H5>
-        <div class="w3-cell-row">
-        <p class="w3-text-green" align ="center" id="mainCurrent"><b>Loading</b></p>
-        </div>
+        <H6 class="w3-text-green" align="center"><b>MAIN CURRENT</b></H6>
+        <p class="w3-text-green w3-small" align ="center" id="mainCurrent"><b>Loading</b></p>
       </div>
       <div class="w3-container w3-black w3-border w3-border-green w3-cell">
-      <H5 class="w3-text-green" align="center"><b>RIG CURRENT</b></H5>
-        <div class="w3-cell-row">
-        <p class="w3-text-green" align ="center" id="rigCurrent"><b>Loading</b></p>
-        </div>
+        <H6 class="w3-text-green" align="center"><b>RIG CURRENT</b></H6>
+        <p class="w3-text-green w3-small" align ="center" id="rigCurrent"><b>Loading</b></p>
       </div>
 
     </div>
 
 
       <div class="w3-container w3-black">
-        <h6 class="w3-text-green" align="center"><b>N3VEM</b></h6>
+        <h6 class="w3-text-green w3-small" align="center"><b>N3VEM</b></h6>
       </div>
     
-      <div class="w3-cell-row w3-black">
+      <div class="w3-cell-row w3-black w3-border w3-border-green">
 
-        <div class="w3-container w3-black w3-cell w3-border w3-border-green w3-padding-16" style="width:25%">
-          <button class="w3-button w3-block w3-border w3-border-green w3-black w3-text-green" id="hellobutton"><b>Power Up</b></button>
-          <button class="w3-button w3-block w3-border w3-border-green w3-black w3-text-green" id="goodbyebutton"><b>Power Down</b></button>
-          <button class="w3-button w3-block w3-border w3-border-green w3-black w3-text-green" id="lowlightsonbutton"><b>Desk Lights On</b></button>
-          <button class="w3-button w3-block w3-border w3-border-green w3-black w3-text-green" id="lowlightsoffbutton"><b>Desk Lights Off</b></button>
-          <button class="w3-button w3-block w3-border w3-border-green w3-black w3-text-green" id="highlightsonbutton"><b>Overhead Lights On</b></button>
-          <button class="w3-button w3-block w3-border w3-border-green w3-black w3-text-green" id="highlightsoffbutton"><b>Overhead Lights Off</b></button>
-          <button class="w3-button w3-block w3-border w3-border-green w3-black w3-text-green" id="rigonbutton"><b>Main Rig On</b></button>
-          <button class="w3-button w3-block w3-border w3-border-green w3-black w3-text-green" id="rigoffbutton"><b>Main Rig Off</b></button>
-          <button class="w3-button w3-block w3-border w3-border-green w3-black w3-text-green" id="audioonbutton"><b>Audio Equipment On</b></button>
-          <button class="w3-button w3-block w3-border w3-border-green w3-black w3-text-green" id="audiooffbutton"><b>Audio Equipment Off</b></button>    
-          <button class="w3-button w3-block w3-border w3-border-green w3-black w3-text-green" id="speakersonbutton"><b>Speakers On</b></button>
-          <button class="w3-button w3-block w3-border w3-border-green w3-black w3-text-green" id="speakersoffbutton"><b>Speakers Off</b></button>            
-          <button class="w3-button w3-block w3-border w3-border-green w3-black w3-text-green" id="vuonbutton"><b>VU Meters On</b></button>
-          <button class="w3-button w3-block w3-border w3-border-green w3-black w3-text-green" id="vuoffbutton"><b>VU Meters Off</b></button>            
+        <div class="w3-container w3-black w3-cell w3-padding-16">
+          <button class="w3-button w3-block w3-border w3-border-green w3-black w3-text-green w3-small" id="hellobutton"><b>Power Up</b></button>
+          <button class="w3-button w3-block w3-border w3-border-green w3-black w3-text-green w3-small" id="lowlightsonbutton"><b>Desk Lights On</b></button>
+          <button class="w3-button w3-block w3-border w3-border-green w3-black w3-text-green w3-small" id="highlightsonbutton"><b>Overhead Lights On</b></button>
+          <button class="w3-button w3-block w3-border w3-border-green w3-black w3-text-green w3-small" id="rigonbutton"><b>Main Rig On</b></button>
+          <button class="w3-button w3-block w3-border w3-border-green w3-black w3-text-green w3-small" id="audioonbutton"><b>Audio Equipment On</b></button>
+          <button class="w3-button w3-block w3-border w3-border-green w3-black w3-text-green w3-small" id="speakersonbutton"><b>Speakers On</b></button>
+          <button class="w3-button w3-block w3-border w3-border-green w3-black w3-text-green w3-small" id="vuonbutton"><b>VU Meters On</b></button>
         </div>
+
+        <div class="w3-container w3-black w3-cell w3-padding-16">
+          <button class="w3-button w3-block w3-border w3-border-green w3-black w3-text-green w3-small" id="goodbyebutton"><b>Power Down</b></button>
+          <button class="w3-button w3-block w3-border w3-border-green w3-black w3-text-green w3-small" id="lowlightsoffbutton"><b>Desk Lights Off</b></button>
+          <button class="w3-button w3-block w3-border w3-border-green w3-black w3-text-green w3-small" id="highlightsoffbutton"><b>Overhead Lights Off</b></button>
+          <button class="w3-button w3-block w3-border w3-border-green w3-black w3-text-green w3-small" id="rigoffbutton"><b>Main Rig Off</b></button>
+          <button class="w3-button w3-block w3-border w3-border-green w3-black w3-text-green w3-small" id="audiooffbutton"><b>Audio Equipment Off</b></button>    
+          <button class="w3-button w3-block w3-border w3-border-green w3-black w3-text-green w3-small" id="speakersoffbutton"><b>Speakers Off</b></button>            
+          <button class="w3-button w3-block w3-border w3-border-green w3-black w3-text-green w3-small" id="vuoffbutton"><b>VU Meters Off</b></button>            
+        </div>
+
+        <!-- This block was in to play with the audio stream, but I'm not sure I actually want it here...blocking out for now.
         <div class="w3-container w3-black w3-cell w3-border w3-border-green">
           <H3 class="w3-text-green" align="center"> Live Stream of all Audio from the Shack Mixer. </H3>
           <p class="w3-text-green" align="center"> this is a stream of whatever I happen to be putting out the main channels of the mixer</p>
-          <p align="center"><audio controls><source src="<?php echo "$mainmixeraudioserver";?>" type="audio/mpeg"></audio></p>
-          
+          <p align="center"><audio controls><source src="<?php //echo "$mainmixeraudioserver";?>" type="audio/mpeg"></audio></p>
+        -->  
         </div>
       
       </div>
