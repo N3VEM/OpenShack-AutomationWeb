@@ -11,3 +11,4 @@ Important Notes:
  - Audio streaming currently in place is done using icecast2 and darkice.  See man pages etc. for those packages to set that up
  - PowerMonitorArduinoMegaReader.py should be set to run as a system service using systemd
  - the user set up for your web server (i.e. www-data) will need access to dialout group so that serial data can be accessed
+ - for the rig control in these pages to work, rigctld must be running on the machine that the rig is connected to.  See README in N3VEM/shackBox respository.
