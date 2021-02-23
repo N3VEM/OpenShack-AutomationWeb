@@ -218,8 +218,8 @@
     </div>
 
 
-      <div class="w3-container w3-black">
-        <h6 class="w3-text-green w3-small" align="center"><b>N3VEM</b></h6>
+      <div class="w3-container w3-black w3-center w3-padding">
+        <a href="ftdx3000.php" class="w3-button w3-medium w3-border w3-border-green w3-text-green w3-small w3-center">ftdx3000 Rig Control</a>
       </div>
     
       <div class="w3-cell-row w3-black w3-border w3-border-green">
