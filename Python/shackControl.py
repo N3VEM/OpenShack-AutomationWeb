@@ -1,5 +1,4 @@
-
-#!usr/bin/env python
+#!/usr/bin/env python
 
 import serial
 import datetime
@@ -16,7 +15,7 @@ controlArduino.reset_input_buffer()
 #---------Functions-------------------------------------
 
 def sendCommand(cmnd):
-    controlArduino.write(cmnd)
+    controlArduino.write(cmnd.encode())
 
 def readResponse():
     response = controlArduino.readline()
@@ -66,7 +65,6 @@ def controlTerminal():
         return 0
     controlTerminal()
 
-    
 #---main stuff--------------------------------------------
 parser = argparse.ArgumentParser(description='Shack Control')
 parser.add_argument("--cmnd", type=str, default="none", help="used to indicate a control command will follow")

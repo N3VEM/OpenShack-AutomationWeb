@@ -30,7 +30,7 @@ powerMonitorArduino.reset_input_buffer()
 def getSensorReadings(sensor):
     sensorRequest = "{"+sensor+"}"
     #print(sensorRequest)
-    powerMonitorArduino.write(sensorRequest)
+    powerMonitorArduino.write(sensorRequest.encode())
     #print("requested")
     powMonArdSer = powerMonitorArduino.readline()
     #print(powMonArdSer)
