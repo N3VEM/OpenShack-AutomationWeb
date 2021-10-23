@@ -5,15 +5,25 @@ float calibRigCurrentValue = 5.005/1024.000; //used to calibrate main volt sense
 float mainVR1 = 78800.0; //used in voltage divider calc for volt sense
 float mainVR2 = 14860.0; //used in voltage divider calc for volt sense
 int throttle = 0; //used to throttle serial output speed if desired
+//next chunk for fan stuff
+const int fan_control_pin = 9;
+int count = 0;
+unsigned long start_time;
+int rpm;
 
 
 void setup(){
   Serial.begin(9600);
+  pinMode(fan_control_pin,OUTPUT);
+  analogWrite(fan_control_pin, 0);
+  attachInterrupt(2, counter, RISING);
+
 }
 
 void loop(){
   String requestedValue;
   String junkCollection;
+  int speedValue;
   int value = 1.2;
 
   while(!Serial.available()){}
@@ -30,7 +40,13 @@ void loop(){
   else if (requestedValue == "mainVoltage"){
     sendResponseNum(requestedValue, getMainVoltage());
   }
-  
+  else if (requestedValue == "fanCycle"){
+    fanCycle();
+  }
+  else if (requestedValue.startsWith("setFan:")){
+    speedValue = requestedValue.substring(7).toInt();
+    sendResponseNum("setFan",setFanSpeed(speedValue));
+  } 
 }
 
 void sendResponseNum(String valueType, float value){
@@ -71,4 +87,31 @@ float getMainVoltage(){
   float mainVoltage = mainVoltageSensorVoltage / (mainVR2/(mainVR1+mainVR2));
   return mainVoltage;
   
+}
+
+void fanCycle(){
+ for(int pwm = 0; pwm <=255; pwm+=51){
+   analogWrite(fan_control_pin,pwm);
+   delay(5000);
+   start_time = millis();
+   count = 0;
+   while((millis() - start_time) < 1000){
+   }
+   rpm = count +30;
+   Serial.print(map(pwm,0,255,0,100));
+   Serial.print(" ");
+   Serial.println(rpm);
+ } 
+ analogWrite(fan_control_pin,0);
+}
+
+float setFanSpeed(int pct){
+  int pwmValue;
+  pwmValue = pct*2.55;
+  analogWrite(fan_control_pin,pwmValue);
+  return pct;
+}
+
+void counter(){
+  count++;
 }

@@ -78,6 +78,17 @@ def insert3(procedure, item1, item2, item3):
     shackCursor.execute(sqlStoreReadings)
     shackConnection.conn.commit()
 
+def translate(value, leftMin, leftMax, rightMin, rightMax):
+    # Figure out how 'wide' each range is
+    leftSpan = leftMax - leftMin
+    rightSpan = rightMax - rightMin
+
+    # Convert the left range into a 0-1 range (float)
+    valueScaled = float(value - leftMin) / float(leftSpan)
+
+    # Convert the 0-1 range into a value in the right range.
+    return rightMin + (valueScaled * rightSpan)
+
 #-----Main--------------------------------------------------------#
 
 while True:
@@ -105,6 +116,13 @@ while True:
             insert3("addMainVoltageValues", mainVmin, mainVavg, mainVmax)
             insert3("addMainCurrentValues", mainImin, mainIavg, mainImax)
             insert3("addHFrigCurrentValues", rigImin, rigIavg, rigImax)
+
+            temperatureFile = open("/sys/class/thermal/thermal_zone0/temp", "r")
+            temp = temperatureFile.readline ()
+            fanSpeed = translate(int(temp), 50000, 70000, 0, 100)
+            #print(temp)
+            #print(fanSpeed)
+            fanSetPoint = getSensorReadings("setFan:"+str(fanSpeed))
 
     except:
         shackCursor.close()
