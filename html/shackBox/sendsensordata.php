@@ -20,6 +20,10 @@ elseif($requestReceived == 'rigcurrent')
 {
     echo number_format($sensorDataArray['rigCurrent'], 2, '.', '');
 }
+elseif($requestReceived == 'boxtemp')
+{
+    echo number_format($sensorDataArray['boxTemp'], 2, '.', '');
+}
 else
 {
     echo 'Inv';

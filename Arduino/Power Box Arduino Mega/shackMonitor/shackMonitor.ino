@@ -10,6 +10,8 @@ const int fan_control_pin = 9;
 int count = 0;
 unsigned long start_time;
 int rpm;
+//temperature sense stuff
+int tempPin = A3;
 
 
 void setup(){
@@ -46,7 +48,13 @@ void loop(){
   else if (requestedValue.startsWith("setFan:")){
     speedValue = requestedValue.substring(7).toInt();
     sendResponseNum("setFan",setFanSpeed(speedValue));
-  } 
+  }
+  else if (requestedValue == "boxTemp"){
+    sendResponseNum(requestedValue, getBoxTemp());
+  }
+  else if (requestedValue == "boxTempF"){
+    sendResponseNum(requestedValue, getBoxTempF());
+  }  
 }
 
 void sendResponseNum(String valueType, float value){
@@ -114,4 +122,20 @@ float setFanSpeed(int pct){
 
 void counter(){
   count++;
+}
+
+float getBoxTemp(){
+  int boxTempSenseValue = analogRead(tempPin);
+  float voltage = boxTempSenseValue * 5.0;
+  voltage /= 1024.0;
+  float tempC = (voltage - 0.5)*100;
+  
+  return tempC;
+}
+
+float getBoxTempF(){
+  float C = getBoxTemp();
+  float F = (C * 9/5) + 32;
+  
+  return F;
 }

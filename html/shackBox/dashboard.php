@@ -22,6 +22,16 @@
 
     var sensorrefreshrate = 500;
 
+    function fetchboxtempsensordata(){
+      $.post("sendsensordata.php",
+      {
+        request: "boxtemp"
+      },
+      function(data, status){
+        $("#boxTemp").html("<b>"+data+" C</b>");
+      });
+    }
+
     function fetchmainvoltssensordata(){
       $.post("sendsensordata.php",
       {
@@ -51,6 +61,10 @@
         $("#rigCurrent").html("<b>"+data+" A</b>");
       });
     }
+
+    $(document).ready(function(){
+    setInterval(fetchboxtempsensordata,sensorrefreshrate);
+    });  
 
     $(document).ready(function(){
     setInterval(fetchmainvoltssensordata,sensorrefreshrate);
@@ -211,9 +225,14 @@
         <p class="w3-text-green w3-small" align ="center" id="mainCurrent"><b>Loading</b></p>
       </div>
       <div class="w3-container w3-black w3-border w3-border-green w3-cell">
-        <H6 class="w3-text-green" align="center"><b>RIG CURRENT</b></H6>
+        <H6 class="w3-text-green" align="center"><b>FTDX3K CURRENT</b></H6>
         <p class="w3-text-green w3-small" align ="center" id="rigCurrent"><b>Loading</b></p>
       </div>
+      <div class="w3-container w3-black w3-border w3-border-green w3-cell">
+        <H6 class="w3-text-green" align="center"><b>POWER TEMP</b></H6>
+        <p class="w3-text-green w3-small" align ="center" id="boxTemp"><b>Loading</b></p>
+      </div>
+
 
     </div>
 

@@ -42,6 +42,7 @@ def createSensorJson():
     sensorDict.update(eval(getSensorReadings("mainCurrent")))
     sensorDict.update(eval(getSensorReadings("mainVoltage")))
     sensorDict.update(eval(getSensorReadings("rigCurrent")))
+    sensorDict.update(eval(getSensorReadings("boxTemp")))
 
     if(sensorDict['mainCurrent'] < 0):
         sensorDict['mainCurrent'] = 0
@@ -107,6 +108,32 @@ while True:
         rigIlist.append(sensorsDict['rigCurrent'])
 
         if (datetime.datetime.now() - lastSample).total_seconds() > sampleFrequency:
+	# at frequency defined by sample frequency, do some stuff:
+
+	    #get temperature information and set fans etc.
+            temperatureFile = open("/sys/class/thermal/thermal_zone0/temp", "r")
+            cpuTemp = int(int(temperatureFile.readline ()) / 1000)
+            boxTemp = int(sensorsDict['boxTemp'])
+
+            if cpuTemp > 70:
+	        #if the temp of the CPU gets this high, have the cpu temp regulate fan speed
+                fanSpeed = int(translate(cpuTemp, 70, 80, 0, 100))
+                if fanSpeed < 0: fanSpeed = 0
+                if fanSpeed > 100: fanSpeed = 100
+                fanSetPoint = getSensorReadings("setFan:"+str(fanSpeed))
+            else:
+	        #if CPU is below range above, just use ambient box temp to control fan speed
+                fanSpeed = int(translate(boxTemp, 25, 37, 0, 100))
+                if fanSpeed < 0: fanSpeed = 0
+                if fanSpeed > 100: fanSpeed = 100
+                fanSetPoint = getSensorReadings("setFan:"+str(fanSpeed))
+
+            #for verification during testing unremark:
+            #print(str(cpuTemp))
+            #print(str(boxTemp))
+            #print(str(fanSpeed))
+
+            #next chunk of stuff is to store some info in the db for future evaluation 
             mainVmin, mainVavg, mainVmax = minAvgMax(mainVlist)
             mainImin, mainIavg, mainImax = minAvgMax(mainIlist)
             rigImin, rigIavg, rigImax = minAvgMax(rigIlist)
@@ -116,13 +143,6 @@ while True:
             insert3("addMainVoltageValues", mainVmin, mainVavg, mainVmax)
             insert3("addMainCurrentValues", mainImin, mainIavg, mainImax)
             insert3("addHFrigCurrentValues", rigImin, rigIavg, rigImax)
-
-            temperatureFile = open("/sys/class/thermal/thermal_zone0/temp", "r")
-            temp = temperatureFile.readline ()
-            fanSpeed = translate(int(temp), 50000, 70000, 0, 100)
-            #print(temp)
-            #print(fanSpeed)
-            fanSetPoint = getSensorReadings("setFan:"+str(fanSpeed))
 
     except:
         shackCursor.close()
