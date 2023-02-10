@@ -1,5 +1,6 @@
 OpenShack-AutomationWeb
 
+This is depracated. I have switched the automation over to node-red.  At some point I'll come back and update all this stuff.
 
 Part of the larger OpenShack project, this repository is for the code for html/php interface, python scripts for sensor data to be displayed in that interface, etc.
 
